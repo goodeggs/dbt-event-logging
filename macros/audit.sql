@@ -27,7 +27,7 @@
 
     values (
         '{{ event_name }}',
-        {{dbt_utils.current_timestamp_in_utc()}},
+        convert_timezone('UTC', current_timestamp)::timestamp_ntz,
         {% if variable != None %}'{{ schema }}'{% else %}null::varchar(512){% endif %},
         {% if variable != None %}'{{ relation }}'{% else %}null::varchar(512){% endif %},
         '{{ invocation_id }}'
