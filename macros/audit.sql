@@ -39,7 +39,7 @@
 
     values (
         '{{ event_name }}',
-        {{ dbt_utils.current_timestamp_in_utc() }},
+	convert_timezone('UTC', current_timestamp)::timestamp_ntz,
         {% if schema != None %}'{{ schema }}'{% else %}null::varchar(512){% endif %},
         {% if relation != None %}'{{ relation }}'{% else %}null::varchar(512){% endif %},
         {% if user != None %}'{{ user }}'{% else %}null::varchar(512){% endif %},
