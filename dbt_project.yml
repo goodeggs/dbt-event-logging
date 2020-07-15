@@ -1,11 +1,16 @@
 name: 'logging'
-version: '1.0'
+version: '0.3.0'
+config-version: 2
+
+require-dbt-version: [">=0.17.0"]
 
 source-paths: ["models"]
 analysis-paths: ["analysis"]
 test-paths: ["tests"]
 data-paths: ["data"]
 macro-paths: ["macros"]
+
+require-dbt-version: ">=0.16.0"
 
 target-path: "target"
 clean-targets:
@@ -25,4 +30,4 @@ on-run-end:
 
 models:
   logging:
-    schema: dbt_meta
+    +schema: meta
